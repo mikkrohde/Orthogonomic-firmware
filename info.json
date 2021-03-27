@@ -2,7 +2,7 @@
   "keyboard_layout" : "Orthogonomic",
   "url" : "https://github.com/mikkrohde",
   "maintainer" : "MikkRohde",
-  "height" : "10",
+  "height" : "10",  
   "width" : "10",
   "switchMount": "cherry",
   "pcb": true,
