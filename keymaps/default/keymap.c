@@ -1,6 +1,4 @@
-#pragma once
-
-#include "../Orthogonomic.h"
+#include "../../Orthogonomic.h"
 #include "action_layer.h"
 
 /*Macro: Use the next lowest non-transparent key*/
@@ -16,18 +14,19 @@ typedef enum keyLayerLevels{
   _FAMCL,
   _PGRMRDREAM,
   _GML
-};
+} keyLayerLevels;
 
 typedef enum keycodes{
   QWERTY = SAFE_RANGE,
-  NAL,
+  RAISE,
+  LOWER,
   FAMCL,
   PGRMRDREAM,
   GML
-};
+} keycodes;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
+  
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
 /* Default Layer QWERTY
   * ,-----------------------------,             ,-----------------------------,
@@ -43,11 +42,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *     ,----------------------------,       ,---------------------------,
 */
 
-  [_QWERTY] = LAYOUT( KC_ESC ,  KC_TAB   , KC_LSHIFT ,   KC_CAPS   ,  XXXXXXX ,        , KC_LEFT  , KC_DOWN ,  KC_UP   , KC_RIGHT ,  KC_BSPC ,
-                      KC_Q   ,    KC_W   ,    KC_E   ,     KC_R    ,   KC_T   ,        ,   KC_Y   ,  KC_U   ,   KC_I   ,   KC_O   , KC_P     ,
-                      KC_A   ,    KC_S   ,    KC_D   ,     KC_F    ,   KC_G   ,        ,   KC_H   ,  KC_J   ,   KC_K   ,   KC_L   , KC_ENTER ,
-                      KC_Z   ,    KC_X   ,    KC_C   ,     KC_V    ,   KC_B   ,        ,   KC_N   ,  KC_M   , KC_COMMA ,   KC_DOT , KC_MINUS ,
-                             , KC_LCTRL  ,   KC_LALT ,    LOWER    , KC_SPACE ,        , KC_SPACE ,  RAISE  , KC_RALT  , KC_RCTRL            ),
+[_QWERTY] = LAYOUT( KC_ESC ,  KC_TAB   , KC_LSHIFT ,   KC_CAPS   ,  XXXXXXX ,         KC_LEFT  , KC_DOWN ,  KC_UP   , KC_RIGHT ,  KC_BSPC ,
+                    KC_Q   ,    KC_W   ,    KC_E   ,     KC_R    ,   KC_T   ,           KC_Y   ,  KC_U   ,   KC_I   ,   KC_O   , KC_P     ,
+                    KC_A   ,    KC_S   ,    KC_D   ,     KC_F    ,   KC_G   ,           KC_H   ,  KC_J   ,   KC_K   ,   KC_L   , KC_ENTER ,
+                    KC_Z   ,    KC_X   ,    KC_C   ,     KC_V    ,   KC_B   ,           KC_N   ,  KC_M   , KC_COMMA ,   KC_DOT , KC_MINUS ,
+                            KC_LCTRL  ,   KC_LALT ,    LOWER     , KC_SPACE ,         KC_SPACE ,  RAISE  , KC_RALT  , KC_RCTRL            
+),S
 
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
 /* Number and Arithmetic layer
@@ -64,11 +64,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *     ,----------------------------,       ,---------------------------,
 */
 
-[_NAL] = LAYOUT(KC_ESC ,  KC_TAB   , KC_LSHIFT ,   KC_CAPS   ,  XXXXXXX ,        , XXXXXXX  , XXXXXXX , XXXXXXX  , XXXXXXX  ,  KC_BSPC ,
-                KC_1   ,    KC_2   ,    KC_3   ,     KC_4    ,   KC_5   ,        ,   KC_6   ,  KC_7   ,   KC_8   ,   KC_9   ,  KC_P0   ,
-                XXXXXXX,  KC_PERC  ,  KC_SLSH  ,   KC_ASTR   ,  XXXXXXX ,        , XXXXXXX  , XXXXXXX , XXXXXXX  ,  KC_LEFT , KC_ENTER ,
-                XXXXXXX,  KC_LPRN  ,  KC_RPRN  ,   KC_PLUS   , KC_MINUS ,        , XXXXXXX  , XXXXXXX , KC_LEFT  ,  KC_DOWN , KC_RIGHT ,
-                       ,  KC_LCTRL ,  KC_LALT  ,    LOWER    , KC_SPACE ,        , KC_SPACE ,  RAISE  , KC_RALT  , KC_RCTRL            ),
+[_NAL] = LAYOUT(KC_ESC ,  KC_TAB   , KC_LSHIFT ,   KC_CAPS   ,  XXXXXXX ,         XXXXXXX  , XXXXXXX , XXXXXXX  , XXXXXXX  ,  KC_BSPC ,
+                KC_1   ,    KC_2   ,    KC_3   ,     KC_4    ,   KC_5   ,           KC_6   ,  KC_7   ,   KC_8   ,   KC_9   ,  KC_P0   ,
+                XXXXXXX,  KC_PERC  ,  KC_SLSH  ,   KC_ASTR   ,  XXXXXXX ,         XXXXXXX  , XXXXXXX , XXXXXXX  ,  KC_LEFT , KC_ENTER ,
+                XXXXXXX,  KC_LPRN  ,  KC_RPRN  ,   KC_PLUS   , KC_MINUS ,         XXXXXXX  , XXXXXXX , KC_LEFT  ,  KC_DOWN , KC_RIGHT ,
+                         KC_LCTRL ,  KC_LALT  ,    LOWER    , KC_SPACE ,         KC_SPACE ,  RAISE  , KC_RALT  , KC_RCTRL            
+),
 
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
 /* Function and media layer
@@ -85,11 +86,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *     ,----------------------------,       ,----------------------------,
 */
 
-[_FAMCL] = LAYOUT(KC_ESC ,  KC_TAB   , KC_LSHIFT ,   KC_CAPS  , XXXXXXX  ,        , KC_LEFT  , KC_DOWN ,  KC_UP   , KC_RIGHT ,  KC_BSPC ,
-                  XXXXXXX,  XXXXXXX  ,  XXXXXXX  ,   XXXXXXX  , XXXXXXX  ,        ,   KC_Y   ,  KC_U   ,   KC_I   ,   KC_O   , XXXXXXX  ,
-                  XXXXXXX,  XXXXXXX  ,  XXXXXXX  ,   XXXXXXX  , XXXXXXX  ,        ,   KC_H   ,  KC_J   ,   KC_K   ,   KC_L   , KC_ENTER ,
-                  XXXXXXX,  XXXXXXX  ,  XXXXXXX  ,   XXXXXXX  , XXXXXXX  ,        ,   KC_N   ,  KC_M   , KC_COMMA ,   KC_DOT , XXXXXXX  ,
-                         , KC_LCTRL  ,   KC_LALT ,   LOWER    , KC_SPACE ,        , KC_SPACE ,  RAISE  , KC_RALT  , KC_RCTRL            ),
+[_FAMCL] = LAYOUT(KC_ESC ,  KC_TAB   , KC_LSHIFT ,   KC_CAPS  , XXXXXXX  ,         KC_LEFT  , KC_DOWN ,  KC_UP   , KC_RIGHT ,  KC_BSPC ,
+                  XXXXXXX,  XXXXXXX  ,  XXXXXXX  ,   XXXXXXX  , XXXXXXX  ,           KC_Y   ,  KC_U   ,   KC_I   ,   KC_O   , XXXXXXX  ,
+                  XXXXXXX,  XXXXXXX  ,  XXXXXXX  ,   XXXXXXX  , XXXXXXX  ,           KC_H   ,  KC_J   ,   KC_K   ,   KC_L   , KC_ENTER ,
+                  XXXXXXX,  XXXXXXX  ,  XXXXXXX  ,   XXXXXXX  , XXXXXXX  ,           KC_N   ,  KC_M   , KC_COMMA ,   KC_DOT , XXXXXXX  ,
+                          KC_LCTRL  ,   KC_LALT ,   LOWER    , KC_SPACE ,         KC_SPACE ,  RAISE  , KC_RALT  , KC_RCTRL            
+),
 
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
 /* Programmers dream (Idea) REVAMP at some point for better layout
@@ -107,11 +109,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 
-[_PGRMRDREAM] = LAYOUT(KC_ESC ,  KC_TAB   , KC_LSHIFT ,   KC_CAPS   ,          ,        , KC_LEFT  , KC_DOWN , KC_UP    , KC_RIGHT , KC_BSPC  ,
-                       KC_EXLM,  KC_DQT   ,  KC_HASH  ,   KC_DLR    , KC_PERC  ,        , KC_AMPR  , KC_LCBR , KC_LPRN  , KC_RPRN  , KC_RCBR  ,
-                       KC_GT  ,  KC_PERC  ,    KC_D   ,   KC_ASTR   , KC_TILD  ,        , KC_CIRC  ,  KC_J   ,   KC_K   ,   KC_UP   , KC_ENTER ,
-                       KC_LT  ,    KC_X   ,  KC_PIPE  ,   KC_PLUS   , KC_MINUS ,        , KC_UNDS  ,  KC_M   , KC_LEFT  ,   KC_DOWN , KC_RIGHT ,
-                              , KC_LCTRL  ,  KC_LALT  ,    LOWER    , KC_SPACE ,        , KC_SPACE ,  RAISE  , KC_RALT  , KC_RCTRL  ,          ),
+[_PGRMRDREAM] = LAYOUT(KC_ESC ,  KC_TAB   , KC_LSHIFT ,   KC_CAPS   ,          ,         KC_LEFT  , KC_DOWN , KC_UP    , KC_RIGHT , KC_BSPC  ,
+                       KC_EXLM,  KC_DQT   ,  KC_HASH  ,   KC_DLR    , KC_PERC  ,         KC_AMPR  , KC_LCBR , KC_LPRN  , KC_RPRN  , KC_RCBR  ,
+                       KC_GT  ,  KC_PERC  ,    KC_D   ,   KC_ASTR   , KC_TILD  ,         KC_CIRC  ,  KC_J   ,   KC_K   ,   KC_UP   , KC_ENTER ,
+                       KC_LT  ,    KC_X   ,  KC_PIPE  ,   KC_PLUS   , KC_MINUS ,         KC_UNDS  ,  KC_M   , KC_LEFT  ,   KC_DOWN , KC_RIGHT ,
+                                KC_LCTRL  ,  KC_LALT  ,    LOWER    , KC_SPACE ,         KC_SPACE ,  RAISE  , KC_RALT  , KC_RCTRL  ,          
+),
 
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
 /* Gaming Layer
@@ -129,18 +132,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 
-[_GML] = LAYOUT(KC_ESC ,    KC_1   ,    KC_2   ,     KC_3    ,   KC_4   ,        ,   KC_5   ,  KC_6   ,   KC_7  ,   KC_8  , KC_0     ,
-                KC_TAB ,    KC_Q   ,    KC_W   ,     KC_E    ,   KC_R   ,        ,   KC_T   , KC_KP_7 , KC_KP_8 , KC_KP_9 , KC_BSPC  ,
-                KC_CAPS,    KC_A   ,    KC_S   ,     KC_D    ,   KC_G   ,        ,   KC_G   , KC_KP_4 , KC_KP_5 , KC_KP_6 , KC_ENTER ,
-                KC_LSFT,  XXXXXXX  ,    KC_Z   ,     KC_X    ,   KC_C   ,        ,   KC_V   , KC_KP_1 , KC_KP_2 , KC_KP_3 , XXXXXXX  ,
-                       , KC_LCTRL  ,   KC_LALT ,    LOWER    , KC_SPACE ,        , KC_SPACE ,  RAISE  , KC_RALT , KC_RCTRL,           )
+[_GML] = LAYOUT(KC_ESC ,    KC_1   ,    KC_2   ,     KC_3    ,   KC_4   ,        KC_5   ,  KC_6   ,   KC_7  ,   KC_8  , KC_0     ,
+                KC_TAB ,    KC_Q   ,    KC_W   ,     KC_E    ,   KC_R   ,        KC_T   , KC_KP_7 , KC_KP_8 , KC_KP_9 , KC_BSPC  ,
+                KC_CAPS,    KC_A   ,    KC_S   ,     KC_D    ,   KC_G   ,        KC_G   , KC_KP_4 , KC_KP_5 , KC_KP_6 , KC_ENTER ,
+                KC_LSFT,  XXXXXXX  ,    KC_Z   ,     KC_X    ,   KC_C   ,        KC_V   , KC_KP_1 , KC_KP_2 , KC_KP_3 , XXXXXXX  ,
+                        KC_LCTRL  ,   KC_LALT ,    LOWER    , KC_SPACE ,         KC_SPACE ,  RAISE  , KC_RALT , KC_RCTRL,           
+);
 
 
 }
 
 
 
-bool process_record_user(keyrecord_t *record, uint16_t keycodes){
+bool process_record_user(uint16_t keycodes, keyrecord_t *record){
     switch (keycodes) {
       case QWERTY:
             if (record->event.pressed) {

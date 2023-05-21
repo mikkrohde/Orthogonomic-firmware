@@ -1,9 +1,12 @@
 #include "config_common.h"
 
-#define DEVICE_VER 0
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0xC1ED
+#define PRODUCT_ID      0x23B0
+#define DEVICE_VER      0x0001
 #define MANUFACTURER    Orthogonomic
 #define PRODUCT         Orthogonomic
-#define DESCRIPTION     QMK firmware made for the Orthogonomic keyboard
+#define DESCRIPTION     "QMK firmware made for the Orthogonomic keyboard"
 /*keyboard matrix size*/
 #define MATRIX_ROWS 10
 #define MATRIX_COLS 15
